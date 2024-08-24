@@ -11,7 +11,12 @@ GameObject:
   - component: {fileID: 6464282477334948718}
   - component: {fileID: 7307479289129992494}
   - component: {fileID: 7008119673104043037}
+
   - component: {fileID: 32445653352184725}
+=======
+
+  - component: {fileID: 32445653352184725}
+
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -28,8 +33,18 @@ Transform:
   m_GameObject: {fileID: 3073497078769608239}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+
   m_LocalPosition: {x: -0.31, y: -1.28, z: 0}
   m_LocalScale: {x: 2.4285, y: 1.6833, z: 1}
+=======
+
+  m_LocalPosition: {x: -0.31, y: -1.28, z: 0}
+  m_LocalScale: {x: 2.4285, y: 1.6833, z: 1}
+
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+
+
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,6 +122,9 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+
+=======
+
 --- !u!50 &32445653352184725
 Rigidbody2D:
   serializedVersion: 4
@@ -134,3 +152,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+
+=======
+
