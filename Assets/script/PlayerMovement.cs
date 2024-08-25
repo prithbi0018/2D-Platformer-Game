@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     public float speed;
+    public float jump;
     public BoxCollider2D boxCollider2D;
+    private Rigidbody2D rb2d;
 
     private Vector2 offsetx;
     private Vector2 offsety;
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         Debug.Log("Player controller awake");
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
       private void Start( )
     {
@@ -47,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 positon = transform.position;
         positon.x += horizontal * speed * Time.deltaTime;
         transform.position = positon;
+
+        if (vertical>0)
+        {
+            rb2d.AddForce(new Vector2(0f , jump), ForceMode2D.Force);
+        }
 
     }
     private void PlayMovementAnimation(float horizontal, float vertical)
