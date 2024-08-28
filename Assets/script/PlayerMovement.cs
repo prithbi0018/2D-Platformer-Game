@@ -1,3 +1,11 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Tilemaps;
+using UnityEngine;
+using UnityEngine.UIElements;
+=======
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,14 +22,23 @@ using UnityEngine;
 
 
 
+
 public class PlayerMovement : MonoBehaviour
 {
+
+
+=======
 
 
     public Animator animator;
     public float speed;
     public float jump;
     public BoxCollider2D boxCollider2D;
+
+    public ScoreController scoreController;
+
+    private Rigidbody2D rb2d;
+=======
     private Rigidbody2D rb2d;
 
     private Vector2 offsetx;
@@ -33,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Player controller awake");
         rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
+
+
+
+
+=======
+
       private void Start( )
     {
         //Fetching initial collider properties
@@ -121,6 +144,30 @@ public class PlayerMovement : MonoBehaviour
             //Play Crouch animation
             animator.SetBool("Crouch", crouch);
         }
+
+
+    public void PickUpKey()
+    {
+        Debug.Log("Player pickup the key");
+        scoreController.IncreaseScore(10);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
     }
 
 
@@ -172,5 +219,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
+
 
 
