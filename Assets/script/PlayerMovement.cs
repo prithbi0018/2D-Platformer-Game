@@ -121,6 +121,15 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Player pickup the key");
         scoreController.IncreaseScore(10);
     }
+
+
+    public void KillPlayer()
+    {
+        Debug.Log("Player kiled the enemy");
+        Destroy(gameObject);
+    }
+=======
+
 }
 
 
