@@ -1,20 +1,46 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
+=======
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEditor.Tilemaps;
+using UnityEngine;
+using UnityEngine.UIElements;
+=======
+
+using UnityEditor.Tilemaps;
+using UnityEngine;
+using UnityEngine.UIElements;
+=======
+using UnityEngine;
+
+
+
 
 public class PlayerMovement : MonoBehaviour
 {
+
+
+=======
+
 
     public Animator animator;
     public float speed;
     public float jump;
     public BoxCollider2D boxCollider2D;
+
     public ScoreController scoreController;
 
     private Rigidbody2D rb2d;
+=======
+    private Rigidbody2D rb2d;
+
     private Vector2 offsetx;
     private Vector2 offsety;
 
@@ -26,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+
+
+=======
 
       private void Start( )
     {
@@ -116,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Crouch", crouch);
         }
 
+
     public void PickUpKey()
     {
         Debug.Log("Player pickup the key");
@@ -134,6 +164,61 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+
+
+
+=======
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+=======
+    private float horizontal;
+    private float speed = 7f;
+    private bool isFacingRight = true;
+
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundcheck;
+    [SerializeField] private LayerMask groundlayer;
+
+
+
+    void Update()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
+
+        flip();
+
+    }
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
+
+    private void flip()
+    {
+        if ((isFacingRight && horizontal < 0f) || (!isFacingRight && horizontal > 0f))
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+}
 
 
 
