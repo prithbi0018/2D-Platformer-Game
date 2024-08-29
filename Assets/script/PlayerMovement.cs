@@ -122,11 +122,14 @@ public class PlayerMovement : MonoBehaviour
         scoreController.IncreaseScore(10);
     }
 
+
     public void KillPlayer()
     {
         Debug.Log("Player kiled the enemy");
         Destroy(gameObject);
     }
+=======
+
 }
 
 
