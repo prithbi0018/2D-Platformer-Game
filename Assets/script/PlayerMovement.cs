@@ -1,62 +1,60 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public Animator animator;
     public float speed;
     public float jump;
     public BoxCollider2D boxCollider2D;
     public ScoreController scoreController;
+    public GameObject[] hearts;  // Array to hold heart UI elements
+
+    public int maxHealth = 3;
+    private int currentHealth;
 
     private Rigidbody2D rb2d;
     private Vector2 offsetx;
     private Vector2 offsety;
 
-
     private void Awake()
     {
         Debug.Log("Player controller awake");
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
 
-
-
-      private void Start( )
+    private void Start()
     {
-        //Fetching initial collider properties
         offsetx = boxCollider2D.size;
         offsety = boxCollider2D.offset;
-    }
 
+        UpdateHeartUI();  // Corrected method name
+    }
 
     public void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-         float vertical = Input.GetAxisRaw("Jump");
-        MoveCharacter(horizontal , vertical);
-        PlayMovementAnimation(horizontal , vertical);
-
-
+        float vertical = Input.GetAxisRaw("Jump");
+        MoveCharacter(horizontal, vertical);
+        PlayMovementAnimation(horizontal, vertical);
     }
 
-    private void MoveCharacter(float horizontal ,float vertical)
+    private void MoveCharacter(float horizontal, float vertical)
     {
-        Vector3 positon = transform.position;
-        positon.x += horizontal * speed * Time.deltaTime;
-        transform.position = positon;
+        Vector3 position = transform.position;
+        position.x += horizontal * speed * Time.deltaTime;
+        transform.position = position;
 
-        if (vertical>0)
+        if (vertical > 0)
         {
-            rb2d.AddForce(new Vector2(0f , jump), ForceMode2D.Force);
+            rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
         }
-
     }
+
     private void PlayMovementAnimation(float horizontal, float vertical)
     {
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
@@ -80,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJump", false);
         }
-        if (Input.GetKey(KeyCode.S)) 
+        if (Input.GetKey(KeyCode.S))
         {
             Crouch(true);
         }
@@ -88,58 +86,70 @@ public class PlayerMovement : MonoBehaviour
         {
             Crouch(false);
         }
-
     }
-        public void Crouch(bool crouch)
+
+    public void Crouch(bool crouch)
+    {
+        if (crouch)
         {
-            if (crouch == true)
-            {
-                float offX = -0.0978f;     //Offset X
-                float offY = 0.5947f;      //Offset Y
-
-                float sizeX = 0.6988f;     //Size X
-                float sizeY = 1.3398f;     //Size Y
-
-                boxCollider2D.size = new Vector2(sizeX, sizeY);   //Setting the size of collider
-                boxCollider2D.offset = new Vector2(offX, offY);   //Setting the offset of collider
-            }
-
-            else
-            {
-                //Reset collider to initial values
-                boxCollider2D.size = offsetx; ;
-                boxCollider2D.offset = offsety;
-                
-            }
-
-            //Play Crouch animation
-            animator.SetBool("Crouch", crouch);
+            boxCollider2D.size = new Vector2(0.6988f, 1.3398f);
+            boxCollider2D.offset = new Vector2(-0.0978f, 0.5947f);
         }
+        else
+        {
+            boxCollider2D.size = offsetx;
+            boxCollider2D.offset = offsety;
+        }
+
+        animator.SetBool("Crouch", crouch);
+    }
 
     public void PickUpKey()
     {
-        Debug.Log("Player pickup the key");
+        Debug.Log("Player picked up the key");
         scoreController.IncreaseScore(10);
+    }
+
+    public void TakeDamage()  // Corrected method name
+    {
+        currentHealth--;
+        Debug.Log("Player Health : " + currentHealth);
+
+        UpdateHeartUI();  // Update the heart UI
+
+        if (currentHealth <= 0)
+        {
+            KillPlayer();
+        }
     }
 
     public void KillPlayer()
     {
-        Debug.Log("Player kiled the enemy");
-        Destroy(gameObject);
+        Debug.Log("Player killed by the enemy");
+        animator.SetTrigger("Die");
+        this.enabled = false;
+
+        Invoke("ReloadLevel", 0.5f);
+    }
+
+    private void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage();
+        }
+    }
+
+    private void UpdateHeartUI()  // Corrected method name
+    {
+        for (int i = 0; i < hearts.Length; i++)  // Corrected to Length
+        {
+            hearts[i].SetActive(i < currentHealth);
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
