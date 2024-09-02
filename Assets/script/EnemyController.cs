@@ -5,11 +5,17 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Animator enemyAnimator;
+
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private GameObject groundDetector;
     [SerializeField] private float rayDistance;
     [SerializeField] private Transform leftBoundary;
     [SerializeField] private Transform rightBoundary;
+=======
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private GameObject groundDetector;
+    [SerializeField] private float rayDistance;
+
 
     private int directionChanger = 1;
 
@@ -24,8 +30,12 @@ public class EnemyController : MonoBehaviour
         transform.Translate(directionChanger * Vector2.right * moveSpeed * Time.deltaTime);
 
         RaycastHit2D hit = Physics2D.Raycast(groundDetector.transform.position, Vector2.down, rayDistance);
+
         if (transform.position.x <= leftBoundary.position.x || transform.position.x >= rightBoundary.position.x)
         
+=======
+        if (!hit)
+
         {
             Vector3 scaleVector = transform.localScale;
             scaleVector.x *= -1;
@@ -53,6 +63,8 @@ public class EnemyController : MonoBehaviour
         scaleVector.x *= -1;
         transform.localScale = scaleVector;
         directionChanger *= -1;
+
+=======
 
     }
 }
