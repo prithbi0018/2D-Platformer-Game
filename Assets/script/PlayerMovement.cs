@@ -11,7 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public float jump;
     public BoxCollider2D boxCollider2D;
     public ScoreController scoreController;
-    public GameObject[] hearts;  // Array to hold heart UI elements
+
+    public GameObject[] hearts; 
+    public GameOverController gameOverController;
+=======
+    public GameObject[] hearts;  // Array to hold heart UI elem
 
     public int maxHealth = 3;
     private int currentHealth;
@@ -32,7 +36,11 @@ public class PlayerMovement : MonoBehaviour
         offsetx = boxCollider2D.size;
         offsety = boxCollider2D.offset;
 
+
+        UpdateHeartUI();  
+=======
         UpdateHeartUI();  // Corrected method name
+
     }
 
     public void Update()
@@ -110,12 +118,20 @@ public class PlayerMovement : MonoBehaviour
         scoreController.IncreaseScore(10);
     }
 
+
+    public void TakeDamage()  
+=======
     public void TakeDamage()  // Corrected method name
+
     {
         currentHealth--;
         Debug.Log("Player Health : " + currentHealth);
 
+
+        UpdateHeartUI();  
+=======
         UpdateHeartUI();  // Update the heart UI
+
 
         if (currentHealth <= 0)
         {
@@ -130,6 +146,10 @@ public class PlayerMovement : MonoBehaviour
         this.enabled = false;
 
         Invoke("ReloadLevel", 0.5f);
+
+        gameOverController.PlayerDied();
+=======
+
     }
 
     private void ReloadLevel()
@@ -145,9 +165,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void UpdateHeartUI()  
+    {
+        for (int i = 0; i < hearts.Length; i++)  
+=======
     private void UpdateHeartUI()  // Corrected method name
     {
         for (int i = 0; i < hearts.Length; i++)  // Corrected to Length
+
         {
             hearts[i].SetActive(i < currentHealth);
         }
