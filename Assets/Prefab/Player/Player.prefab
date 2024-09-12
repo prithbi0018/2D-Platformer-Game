@@ -30,7 +30,11 @@ Transform:
 
   m_LocalPosition: {x: 0, y: 2, z: -10}
 =======
+
+  m_LocalPosition: {x: 0, y: 2, z: -10}
+=======
   m_LocalPosition: {x: 0.11, y: 1.91, z: -8.93}
+
 
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,7 +54,11 @@ Camera:
 
   m_BackGroundColor: {r: 0.091847636, g: 0.1509434, b: 0.13759966, a: 0}
 =======
+
+  m_BackGroundColor: {r: 0.091847636, g: 0.1509434, b: 0.13759966, a: 0}
+=======
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+
 
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -79,7 +87,11 @@ Camera:
 
   orthographic size: 13.436302
 =======
+
+  orthographic size: 13.436302
+=======
   orthographic size: 7.7062263
+
 
   m_Depth: -1
   m_CullingMask:
@@ -149,6 +161,9 @@ GameObject:
   - component: {fileID: 8036922173682034558}
   - component: {fileID: 32445653352184725}
   - component: {fileID: 1949858640010801612}
+
+  - component: {fileID: 6658079649615251121}
+=======
 
   - component: {fileID: 6658079649615251121}
 =======
@@ -267,6 +282,9 @@ MonoBehaviour:
   jump: 100
   boxCollider2D: {fileID: 1949858640010801612}
 
+=======
+
+
   scoreController: {fileID: 0}
   hearts:
   - {fileID: 0}
@@ -274,6 +292,8 @@ MonoBehaviour:
   - {fileID: 0}
   gameOverController: {fileID: 0}
   maxHealth: 3
+
+=======
 =======
 
 --- !u!50 &32445653352184725
@@ -349,6 +369,9 @@ BoxCollider2D:
   m_Size: {x: 0.56276065, y: 1.864228}
   m_EdgeRadius: 0
 
+=======
+
+
 --- !u!114 &6658079649615251121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,4 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+=======
+
 

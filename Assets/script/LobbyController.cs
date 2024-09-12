@@ -1,3 +1,30 @@
+
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class LobbyController : MonoBehaviour
+{   
+    public Button buttonplay;
+    public GameObject LevelSelection; 
+
+    
+
+    private void Awake()
+    {
+        buttonplay.onClick.AddListener(PlayGame);
+    }
+    private void PlayGame()
+    {
+      
+      LevelSelection.SetActive(true); 
+            
+    }
+
+
+ 
+    
+=======
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,4 +42,5 @@ public class LobbyController : MonoBehaviour
         Debug.Log("Quit the game");
         Application.Quit();
     }
+
 }

@@ -6,16 +6,20 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Animator enemyAnimator;
 
+=======
+
+
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private GameObject groundDetector;
     [SerializeField] private float rayDistance;
     [SerializeField] private Transform leftBoundary;
     [SerializeField] private Transform rightBoundary;
+
+=======
 =======
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject groundDetector;
     [SerializeField] private float rayDistance;
-
 
     private int directionChanger = 1;
 
@@ -34,7 +38,12 @@ public class EnemyController : MonoBehaviour
         if (transform.position.x <= leftBoundary.position.x || transform.position.x >= rightBoundary.position.x)
         
 =======
+
+        if (transform.position.x <= leftBoundary.position.x || transform.position.x >= rightBoundary.position.x)
+        
+=======
         if (!hit)
+
 
         {
             Vector3 scaleVector = transform.localScale;
@@ -64,6 +73,7 @@ public class EnemyController : MonoBehaviour
         transform.localScale = scaleVector;
         directionChanger *= -1;
 
+=======
 =======
 
     }
