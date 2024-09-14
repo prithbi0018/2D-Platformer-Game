@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+using UnityEngine.UI;
+=======
 using UnityEngine.UI;  
+
 
 public class GameOverController : MonoBehaviour
 {
@@ -10,12 +14,20 @@ public class GameOverController : MonoBehaviour
 
     private void Awake()
     {
+
+=======
         
+
         buttonRestart.onClick.AddListener(ReloadLevel);
     }
 
     public void PlayerDied()
     {
+
+        
+        SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
+=======
+
         gameObject.SetActive(true);
     }
 
@@ -24,9 +36,14 @@ public class GameOverController : MonoBehaviour
         Debug.Log("Reloading scene 0");
 
         Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex);
+=======
+
+        Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex); 
 =======
         SceneManager.LoadScene(0); 
+
 
     }
 }

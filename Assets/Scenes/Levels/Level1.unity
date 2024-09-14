@@ -3621,6 +3621,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOver
       objectReference: {fileID: 0}
+
+    - target: {fileID: 8021736004728282575, guid: beeb77f350f68c248acba9eb96dbe208,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+=======
+
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3694,6 +3702,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lobbycontroller
       objectReference: {fileID: 0}
+
+    - target: {fileID: 6409301454868504117, guid: 7e5e742cdd3bf0a43867c1d7149790c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+=======
+
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

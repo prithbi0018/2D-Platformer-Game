@@ -19,7 +19,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject[] hearts; 
     public GameOverController gameOverController;
 =======
+
+    public GameObject[] hearts; 
+    public GameOverController gameOverController;
+=======
     public GameObject[] hearts;  // Array to hold heart UI elem
+
 
     public int maxHealth = 3;
     private int currentHealth;
@@ -46,7 +51,11 @@ public class PlayerMovement : MonoBehaviour
 
         UpdateHeartUI();  
 =======
+
+        UpdateHeartUI();  
+=======
         UpdateHeartUI();  // Corrected method name
+
 
 
     }
@@ -132,7 +141,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage()  
 =======
+
+    public void TakeDamage()  
+=======
     public void TakeDamage()  // Corrected method name
+
 
 
     {
@@ -140,6 +153,8 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Player Health : " + currentHealth);
 
         UpdateHeartUI();  
+
+=======
 =======
 
         UpdateHeartUI();  
@@ -168,6 +183,9 @@ public class PlayerMovement : MonoBehaviour
         gameOverController.PlayerDied();
 =======
 
+        gameOverController.PlayerDied();
+=======
+
     }
 
     private void ReloadLevel()
@@ -188,10 +206,13 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < hearts.Length; i++)  
 
 =======
+
+=======
 =======
     private void UpdateHeartUI()  // Corrected method name
     {
         for (int i = 0; i < hearts.Length; i++)  // Corrected to Length
+
 
 
         {

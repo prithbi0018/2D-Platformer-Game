@@ -17,6 +17,18 @@ public class LobbyController : MonoBehaviour
     private void PlayGame()
     {
       
+
+      SoundManager.Instance.Play(Sounds.ButtonClick);  
+      LevelSelection.SetActive(true); 
+
+            
+    }
+
+
+
+ 
+    
+=======
       LevelSelection.SetActive(true); 
             
     }
@@ -42,5 +54,6 @@ public class LobbyController : MonoBehaviour
         Debug.Log("Quit the game");
         Application.Quit();
     }
+
 
 }
